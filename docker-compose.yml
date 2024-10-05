@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  celery_service_1:
+    build:
+      context: ./celery_service_1
+    env_file:
+      - ./celery_service_1/.env
+    volumes:
+      - ./celery_service_1:/app
+    restart: always
+    depends_on:
+      - redis
+
+  celery_service_2:
+    build:
+      context: ./celery_service_2
+    env_file:
+      - ./celery_service_2/.env
+    volumes:
+      - ./celery_service_2:/app
+    restart: always
+    depends_on:
+      - redis
+
+  celery_service_3:
+    build:
+      context: ./celery_service_3
+    env_file:
+      - ./celery_service_3/.env
+    volumes:
+      - ./celery_service_3:/app
+    restart: always
+    depends_on:
+      - redis
+
+
+  app:
+    build:
+      context: ./app
+    env_file:
+      - ./app/.env
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    restart: always

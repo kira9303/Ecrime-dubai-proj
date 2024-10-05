@@ -1,0 +1,24 @@
+2024-10-05 13:20:20,681 - appLogger - INFO - Cleaning news data started
+2024-10-05 13:20:20,681 - appLogger - INFO - Cleaning news data started
+2024-10-05 13:20:21,220 - appLogger - INFO - Cleaning twitter data started
+2024-10-05 13:20:21,221 - appLogger - INFO - Cleaning twitter data started
+2024-10-05 13:20:31,616 - appLogger - INFO - sorted_top_articles: 0, sorted_recent_articles: 10, sorted_top_authors: 0
+2024-10-05 13:20:31,616 - appLogger - INFO - sorted_top_articles: 10, sorted_recent_articles: 0, sorted_top_authors: 10
+2024-10-05 13:23:23,393 - appLogger - INFO - Cleaning news data started
+2024-10-05 13:23:23,400 - appLogger - INFO - Cleaning news data started
+2024-10-05 13:23:23,660 - appLogger - INFO - Cleaning twitter data started
+2024-10-05 13:23:23,661 - appLogger - INFO - Cleaning twitter data started
+2024-10-05 13:23:33,469 - appLogger - INFO - sorted_top_articles: 0, sorted_recent_articles: 10, sorted_top_authors: 0
+2024-10-05 13:23:33,470 - appLogger - INFO - sorted_top_articles: 10, sorted_recent_articles: 0, sorted_top_authors: 10
+2024-10-05 13:31:03,318 - appLogger - INFO - Cleaning twitter data started
+2024-10-05 13:31:03,318 - appLogger - INFO - Cleaning twitter data started
+2024-10-05 13:31:03,319 - appLogger - INFO - Cleaning twitter data completed
+2024-10-05 13:31:03,319 - appLogger - INFO - Sentiment analysis for twitter data completed
+2024-10-05 13:31:03,319 - appLogger - INFO - Cleaning twitter data completed
+2024-10-05 13:31:03,319 - appLogger - INFO - Sentiment analysis for twitter data completed
+2024-10-05 13:31:03,322 - appLogger - INFO - Twitter data saved to redis
+2024-10-05 13:31:03,322 - appLogger - INFO - Twitter data saved to redis
+2024-10-05 13:31:03,567 - appLogger - INFO - Cleaning news data started
+2024-10-05 13:31:03,567 - appLogger - INFO - Cleaning news data started
+2024-10-05 13:31:12,935 - appLogger - INFO - sorted_top_articles: 0, sorted_recent_articles: 10, sorted_top_authors: 0
+2024-10-05 13:31:12,937 - appLogger - INFO - sorted_top_articles: 10, sorted_recent_articles: 0, sorted_top_authors: 10
