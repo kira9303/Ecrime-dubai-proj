@@ -12,9 +12,9 @@ class TwitterAPIFetch:
         print(self.bearer_token)  
         self.search_url = "https://api.twitter.com/2/tweets/search/recent"
         self.query_params_new = {
-            'query': f"keyword_list",
+            'query': f"{keyword_list}",
             'tweet.fields': 'id,text,attachments,author_id,created_at,public_metrics,note_tweet,possibly_sensitive',
-            'media.fields': 'media_key,preview_image_url',
+            'media.fields': 'media_key,preview_image_url,url',
             'expansions': 'author_id,attachments.media_keys',
             'sort_order': 'recency',
             'user.fields': 'username,name,url,public_metrics',
@@ -23,9 +23,9 @@ class TwitterAPIFetch:
 
 
         self.query_params_top = {
-            'query': f"keyword_list",
+            'query': f"{keyword_list}",
             'tweet.fields': 'id,text,attachments,author_id,created_at,public_metrics,note_tweet,possibly_sensitive',
-            'media.fields': 'media_key,preview_image_url',
+            'media.fields': 'media_key,preview_image_url,url',
             'expansions': 'author_id,attachments.media_keys',
             'sort_order': 'relevancy',
             'user.fields': 'username,name,url,public_metrics',

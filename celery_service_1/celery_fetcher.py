@@ -1,3 +1,5 @@
+import json
+
 from celery import Celery
 from services.reddit_api import RedditFetch
 from services.news_api import NewsAPIFetch
@@ -37,18 +39,24 @@ celery_fetcher.conf.update(
 @celery_fetcher.task(name="celery_fetcher.fetch_rapi", queue="reddit_fetch_queue")
 def fetch_rapi(user_id, keyword):
     reddit_fetch_obj = RedditFetch()
-
+    logger.info("keyword: ", keyword)
     result_top = reddit_fetch_obj.fetch_top(keyword)
     result_new = reddit_fetch_obj.fetch_new(keyword)
 
     logger.info(f"Reddit data fetched for {len(result_top['data'])} and {len(result_new['data'])}")
 
     # Start cleaning tasks and return their IDs
+
+    #reddit_recent_articles, reddit_top_articles, reddit_top_authors = [], [], []
+    #combined_data = json.dumps({"top_posts": sorted_top_articles, "recent_posts": sorted_recent_articles,
+     #                           "top_authors": sorted_top_authors}, indent=4)
+    #redis_client.hset(str(user_id), mapping={"r_api": combined_data})
+
     cleaned_data_top_task = celery_fetcher.send_task("celery_cleaner.clean_reddit_api", args=(result_top, 'top', user_id), queue="reddit_cleaning_queue")
-    cleaned_data_recent_task = celery_fetcher.send_task("celery_cleaner.clean_reddit_api", args=(result_new, 'new', user_id), queue="reddit_cleaning_queue")  
+    # cleaned_data_recent_task = celery_fetcher.send_task("celery_cleaner.clean_reddit_api", args=(result_new, 'new', user_id), queue="reddit_cleaning_queue")
 
 
-    while not cleaned_data_recent_task.ready() or not cleaned_data_top_task.ready():
+    while not cleaned_data_top_task.ready():
         pass
     
     

@@ -104,7 +104,7 @@ def generate_news_report(data, user_id="12345"):
     info = []
     media = None
     for post in data:
-        info.append(post.get('text', ''))
+        info.append(post.get('description', ''))
         if media == None:
             media = post['media'] if 'media' in post else None 
 
@@ -122,7 +122,7 @@ def generate_news_report(data, user_id="12345"):
 def generate_twitter_report(data, user_id="12345"):
     info = []
     for post in data:
-        info.append(post.get('text', ''))
+        info.append(post.get('description', ''))
 
     message = message_template(info)
     loop = asyncio.new_event_loop()

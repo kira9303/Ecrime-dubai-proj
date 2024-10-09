@@ -3,4 +3,5 @@ celery_service_4/.env
 celery_service_1/.env
 celery_service_2/.env
 celery_service_3/.env
+app/.env
 

@@ -35,14 +35,16 @@ class RedditFetch:
         # logger.info(f"{os.environ["REDDIT_PASSWORD"]}")
         self.subreddit_name = "all"
         self.limit = 10
-        self.timeframe = 'week'
+        self.timeframe = 'year'
 
     def fetch_top(self, keyword_list):  
         print("keyword_list: ", keyword_list)
         subreddit = self.reddit.subreddit(self.subreddit_name)
-        posts = subreddit.search(query=' OR '.join(keyword_list), sort='top', time_filter=self.timeframe, limit=self.limit)
+        posts = subreddit.search(query=f'{keyword_list}', sort='top', time_filter=self.timeframe, limit=self.limit)
+
         result = {'data': []}
         for post in posts:
+
             post_data = {
                 'data': {
                     'created': post.created_utc,
@@ -55,7 +57,7 @@ class RedditFetch:
                     'author': post.author.name if post.author else '[deleted]',
                     'over_18': post.over_18,
                     'url': post.url,
-                    'author_id': post.author.id
+                    #'author_id': post.author.id
                 }
             }
             result['data'].append(post_data)
@@ -65,10 +67,10 @@ class RedditFetch:
         
     def fetch_new(self, keyword_list):
         subreddit = self.reddit.subreddit(self.subreddit_name)
-        posts = subreddit.search(query=' OR '.join(keyword_list), sort='new', time_filter=self.timeframe, limit=self.limit)
+        posts = subreddit.search(query=f'{keyword_list}', sort='new', time_filter=self.timeframe, limit=self.limit)
         result = {'data': []}
         for post in posts:
-            logger.info(f"post: {post}")
+            #logger.info(f"post: {post}")
             post_data = {
                 'data': {
                     'created': post.created_utc,
@@ -81,7 +83,7 @@ class RedditFetch:
                     'author': post.author.name if post.author else '[deleted]',
                     'over_18': post.over_18,
                     'url': post.url,
-                    'author_id': post.author.id
+                    # 'author_id': post.author.id
                 }
             }
             result['data'].append(post_data)

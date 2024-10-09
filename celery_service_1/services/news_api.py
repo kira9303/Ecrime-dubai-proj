@@ -13,14 +13,14 @@ class NewsAPIFetch:
         self.newsapi = NewsApiClient(self.api_key)
 
     def fetch_new(self, keyword_list):
-        all_articles_new = self.newsapi.get_everything(q='bitcoin',
+        all_articles_new = self.newsapi.get_everything(q=f'{keyword_list}',
                                       language='en',
                                       sort_by='publishedAt',
                                       page=1)
         return all_articles_new
 
     def fetch_top(self, keyword_list):
-        all_articles_top = self.newsapi.get_everything(q='bitcoin',
+        all_articles_top = self.newsapi.get_everything(q=f'{keyword_list}',
                                       language='en',
                                       sort_by='popularity',
                                       page=1)
